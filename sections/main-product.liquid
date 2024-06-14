@@ -200,7 +200,26 @@
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                      <div class="product-accordion">
+                        <div class="product-accordion__item">
+                          <input type="checkbox" name="product-info" id="product-accordion--description" checked>
+                          <label for="product-accordion--description" class="product-accordion__header">
+                            Product Description
+                            {% render 'icon-caret' %}
+                          </label>
+                          <div class="product-accordion__body">{{ product.description }}</div>
+                        </div>
+                        {% if block.settings.extra_info %}
+                          <div class="product-accordion__item">
+                            <input type="checkbox" name="product-info" id="product-accordion--extra_info">
+                            <label for="product-accordion--extra_info" class="product-accordion__header">
+                              Product Extra Info
+                              {% render 'icon-caret' %}
+                            </label>
+                            <div class="product-accordion__body">{{ block.settings.extra_info }}</div>
+                          </div>
+                        {% endif %}
+                      </div>
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -970,6 +989,13 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "extra_info",
+          "label": "Extra Info"
+        }
+      ],
       "limit": 1
     },
     {
