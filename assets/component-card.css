@@ -3,6 +3,7 @@
   height: 100%;
   position: relative;
   text-decoration: none;
+  border: 2px solid #ff0000;
 }
 
 .card {
@@ -424,8 +425,8 @@
 }
 
 .card--standard > .card__content .card__information {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .card--card.card--media .card__inner .card__information,
