@@ -19,9 +19,9 @@
   }
 {%- endstyle -%}
 
-{%- unless settings.cart_type == 'drawer' -%}
+{% comment %} {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-{%- endunless -%}
+{%- endunless -%} {% endcomment %}
 
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
@@ -277,6 +277,7 @@
                           <cart-remove-button
                             id="Remove-{{ item.index | plus: 1 }}"
                             data-index="{{ item.index | plus: 1 }}"
+                            data-id="{{ item.id }}"
                           >
                             <a
                               href="{{ item.url_to_remove }}"
