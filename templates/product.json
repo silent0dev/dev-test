@@ -18,8 +18,8 @@
         "price": {
           "type": "price",
           "settings": {
-            "price_color": "#FF0000",
-            "compare_at_price_color": "#FF0000"
+            "price_color": "#ff0000",
+            "compare_at_price_color": "#ff0000"
           }
         },
         "variant_picker": {
