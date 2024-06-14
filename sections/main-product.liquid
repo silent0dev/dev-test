@@ -30,6 +30,19 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    {% assign color = section.blocks | where: 'type', 'price' | first %}
+
+    {% if color != blank %}
+      .section-{{ section.id }}-padding .price {
+        color: {{ color.settings.price_color | default: '#FF0000' }};
+      }
+
+      .section-{{ section.id }}-padding .price--on-sale .price-item--regular {
+        color: {{ color.settings.compare_at_price_color | default: '#000000' }};
+      }
+    {% endif %}
+
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -794,7 +807,25 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Price Color"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Default Price",
+          "default": "#FF0000"
+        },
+        {
+          "type": "color",
+          "id": "compare_at_price_color",
+          "label": "Compare at Price",
+          "default": "#FF0000"
+        }
+      ]
     },
     {
       "type": "sku",
